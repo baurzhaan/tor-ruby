@@ -18,13 +18,19 @@ Next, make sure your method can handle multiple words:
 
 def substring(word, dictionary)
   # print a word and an array of valid substrings
-  puts "word: #{word}"
-  puts "dictionary: #{dictionary}"
+  # puts "word: #{word}"
+  # puts "dictionary: #{dictionary}"
 
   # print a hash of each substring in the array as a key and a value of 1
-  result_hash = {}
-  dictionary.each { |substring| result_hash[substring] = 1 }
-  puts result_hash
+  # result_hash = {}
+  # dictionary.each { |substring| result_hash[substring] = 1 }
+  # puts "result hash: #{result_hash}"
+
+  # iterate through each substring and check it is in the word
+  result = {}
+  dictionary.each do |substring|
+    puts "#{word} -> #{substring} -> #{word.match?(substring)}"
+  end
 
 end
 
