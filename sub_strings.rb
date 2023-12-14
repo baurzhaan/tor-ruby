@@ -16,7 +16,7 @@ Next, make sure your method can handle multiple words:
 
 =end
 
-def substring(word, dictionary)
+def substrings(word, dictionary)
   # print a word and an array of valid substrings
   # puts "word: #{word}"
   # puts "dictionary: #{dictionary}"
@@ -37,14 +37,17 @@ def substring(word, dictionary)
   dictionary.each { |substring| result[substring] = 0 }
   
   dictionary.each do |substring|
-    result[substring] = result[substring] + 1 if word.match?(substring)
+    result[substring] = result[substring] + 1 if word.downcase.match?(substring)
   end
-  puts result
-
   
+  res = result.select { |substring, count| count > 0 }
+  
+  puts result
+  puts res
 
 end
 
-word = "below"
+# word = "below"
 dictionary = %w[below down go going horn how howdy low it i low own part partner sit]
-substring(word, dictionary)
+substrings("Howdy partner, sit down! How's it going?", dictionary)
+puts '{"down"=>1, "go"=>1, "going"=>1, "how"=>2, "howdy"=>1, "it"=>2, "i"=>3, "own"=>1, "part"=>1, "partner"=>1, "sit"=>1}'
