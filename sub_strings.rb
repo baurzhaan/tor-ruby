@@ -16,12 +16,18 @@ Next, make sure your method can handle multiple words:
 
 =end
 
-def substring(word, substrings)
-  # print a word and array of valid substrings
-  puts word
-  puts substrings
+def substring(word, dictionary)
+  # print a word and an array of valid substrings
+  puts "word: #{word}"
+  puts "dictionary: #{dictionary}"
+
+  # print a hash of each substring in the array as a key and a value of 1
+  result_hash = {}
+  dictionary.each { |substring| result_hash[substring] = 1 }
+  puts result_hash
+
 end
 
 word = "below"
-dictionary = %w[below,down,go,going,horn,how,howdy,it,i,low,own,part,partner,sit]
+dictionary = %w[below down go going horn how howdy it i low own part partner sit]
 substring(word, dictionary)
