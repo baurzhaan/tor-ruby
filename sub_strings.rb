@@ -27,13 +27,24 @@ def substring(word, dictionary)
   # puts "result hash: #{result_hash}"
 
   # iterate through each substring and check it is in the word
+  # result = {}
+  # dictionary.each do |substring|
+  #   puts "#{word} -> #{substring} -> #{word.match?(substring)}"
+  # end
+
+  # iterate through each substring and check it is in the word. Then count it.
   result = {}
+  dictionary.each { |substring| result[substring] = 0 }
+  
   dictionary.each do |substring|
-    puts "#{word} -> #{substring} -> #{word.match?(substring)}"
+    result[substring] = result[substring] + 1 if word.match?(substring)
   end
+  puts result
+
+  
 
 end
 
 word = "below"
-dictionary = %w[below down go going horn how howdy it i low own part partner sit]
+dictionary = %w[below down go going horn how howdy low it i low own part partner sit]
 substring(word, dictionary)
