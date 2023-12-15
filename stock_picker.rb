@@ -13,8 +13,12 @@ def stock_picker(stock_prices)
     biggest = price if price > biggest
     smallest = price if price < smallest
   end
-  p biggest
-  p smallest
+  p "biggest: #{biggest}"
+  p "smallest: #{smallest}"
+  # iterate through each array index
+  stock_prices.each_index do |price_index|
+    puts price_index
+  end
 end
 
 stock_picker([17,3,6,9,15,8,6,1,10])
