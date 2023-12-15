@@ -7,6 +7,14 @@ Implement a method #stock_picker that takes in an array of stock prices, one for
 def stock_picker(stock_prices)
   # print array of stock prices
   p stock_prices
+  # return the biggest and the smallest price
+  biggest, smallest = stock_prices[0], stock_prices[0]
+  stock_prices.each do |price|
+    biggest = price if price > biggest
+    smallest = price if price < smallest
+  end
+  p biggest
+  p smallest
 end
 
 stock_picker([17,3,6,9,15,8,6,1,10])
