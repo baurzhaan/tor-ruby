@@ -5,20 +5,22 @@ Implement a method #stock_picker that takes in an array of stock prices, one for
 =end
 
 def stock_picker(stock_prices)
-  # print array of stock prices
-  p stock_prices
-  # return the biggest and the smallest price
-  biggest, smallest = stock_prices[0], stock_prices[0]
-  stock_prices.each do |price|
-    biggest = price if price > biggest
-    smallest = price if price < smallest
-  end
-  p "biggest: #{biggest}"
-  p "smallest: #{smallest}"
-  # iterate through each array index
+
+  result = Array.new
+  buy_sell_diff = 0
+
   stock_prices.each_index do |price_index|
-    puts price_index
+    stock_prices[price_index + 1..-1].each_index do |inner_index|
+      next if stock_prices[price_index] > stock_prices[price_index + inner_index + 1]
+      
+      current_diff = stock_prices[price_index] - stock_prices[price_index + inner_index + 1]
+      if current_diff.abs > buy_sell_diff
+        buy_sell_diff = current_diff.abs
+        result = [price_index, price_index + inner_index + 1]
+      end
+    end
   end
+  result
 end
 
-stock_picker([17,3,6,9,15,8,6,1,10])
+p stock_picker([17,3,6,9,15,8,6,1,10])
